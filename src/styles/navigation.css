@@ -3,14 +3,9 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 25px 0;
   background-color: #2BD9FE;
 }
 
-.login-register {
+.game-settings {
   float: right;
-}
-
-.navigation a {
-  padding: 28px 25px;
 }
