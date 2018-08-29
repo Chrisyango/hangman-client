@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Route, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import {fetchWords} from '../actions/words';
 
 import Navigation from './navigation';
@@ -48,7 +48,7 @@ class App extends React.Component {
     return(
       <div className="app">
         <Navigation toggleInstructions={event => this.toggleInstructions()}/>
-        <Route exact path="/" component={LandingPage} />
+        <LandingPage word={this.state.word}/>
       </div>
     ) 
   }
