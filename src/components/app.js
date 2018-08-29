@@ -15,17 +15,12 @@ class App extends React.Component {
       word: null
     }
   }
-
   componentDidMount() {
     this.props.dispatch(fetchWords())
     .then(() => {
       this.getWord();
     })
   };
-
-  // componentDidUpdate() {
-  //   this.getWord();
-  // };
 
   toggleInstructions() {
     this.setState({
