@@ -4,7 +4,8 @@ import {withRouter} from 'react-router-dom';
 import {fetchWords} from '../actions/words';
 
 import Navigation from './navigation';
-import LandingPage from './landingpage';
+import Instructions from './instructions';
+import Game from './game';
 
 class App extends React.Component {
   constructor(props) {
@@ -40,10 +41,12 @@ class App extends React.Component {
 
   render() {
     console.log(this.state.word);
+    // let instructions = (this.state.showInstructions) ? <Instructions/> : '';
     return(
       <div className="app">
         <Navigation toggleInstructions={event => this.toggleInstructions()}/>
-        <LandingPage word={this.state.word}/>
+        <Instructions showInstructions={this.state.showInstructions}/>
+        <Game word={this.state.word}/>
       </div>
     ) 
   }

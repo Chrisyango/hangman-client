@@ -1,8 +1,8 @@
 import React from 'react';
 
-import '../../styles/landingpage.css';
+import '../../styles/game.css';
 
-export class LandingPage extends React.Component {
+export class Game extends React.Component {
   constructor(props) {
     super(props);
 
@@ -58,7 +58,7 @@ export class LandingPage extends React.Component {
 
   render() {
     return (
-      <div className="landingpage">
+      <div className="game">
         <h1>Hangman</h1>
         {this.state.spaces}
         <form onSubmit={event => {
@@ -79,4 +79,4 @@ export class LandingPage extends React.Component {
   }
 }
 
-export default LandingPage;
+export default Game;

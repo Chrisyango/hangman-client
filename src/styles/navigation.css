@@ -4,6 +4,7 @@
   left: 0;
   width: 100%;
   background-color: #2BD9FE;
+  z-index: 100;
 }
 
 .game-settings {
