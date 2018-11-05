@@ -9,18 +9,29 @@ export class Game extends React.Component {
     this.state = {
       inputVal: '',
       spaces: [],
-      lettersGuessed: []
+      lettersGuessed: [],
+      word: null
     }
   }
 
   componentDidUpdate() {
-    if (this.props.word && this.state.spaces.length === 0) {
+    if (this.state.word && this.state.spaces.length === 0) {
       this.createSpaces(this.state.lettersGuessed, []);
     }
   }
 
+  componentWillReceiveProps(props) {
+    if (props.word !== this.state.word) {
+      this.setState({
+        lettersGuessed: [],
+        word: props.word,
+        spaces: []
+      });
+    }
+  }
+
   createSpaces(lettersGuessed, arr) {
-    const word = this.props.word;
+    const word = this.state.word;
 
     if (word) {
       for (let i = 0; i < word.length; i++) {

@@ -5,6 +5,7 @@ import {fetchWords} from '../actions/words';
 
 import Navigation from './navigation';
 import Instructions from './instructions';
+import Difficulty from './difficulty';
 import Game from './game';
 
 class App extends React.Component {
@@ -12,7 +13,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      showInstructions : false,
+      display : '',
       word: null
     }
   }
@@ -23,10 +24,16 @@ class App extends React.Component {
     })
   };
 
-  toggleInstructions() {
-    this.setState({
-      showInstructions: !this.state.showInstructions
-    });
+  toggleNavigation(display) {
+    if (this.state.display === '') {
+      this.setState({
+        display: display
+      });
+    } else {
+      this.setState({
+        display: ''
+      });
+    }
   };
 
   getWord() {
@@ -41,12 +48,21 @@ class App extends React.Component {
 
   render() {
     console.log(this.state.word);
-    // let instructions = (this.state.showInstructions) ? <Instructions/> : '';
     return(
       <div className="app">
-        <Navigation toggleInstructions={event => this.toggleInstructions()}/>
-        <Instructions showInstructions={this.state.showInstructions}/>
+        <Navigation
+          toggleNavigation={event => this.toggleNavigation(event)}
+          newGame={event => this.getWord()}
+        />
+        <Instructions display={this.state.display}/>
+        <Difficulty display={this.state.display}/>
         <Game word={this.state.word}/>
+        <button onClick={event => {
+          event.preventDefault();
+          this.setState({
+            word: 'hi'
+          });
+        }}>Hi</button>
       </div>
     ) 
   }

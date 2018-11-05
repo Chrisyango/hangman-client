@@ -8,11 +8,17 @@ export class Navigation extends React.Component {
       <nav className="navigation">
         <button onClick={event => {
           event.preventDefault();
-          this.props.toggleInstructions();
+          this.props.toggleNavigation('showInstructions');
         }}>Show Instructions</button>
         <div className="game-settings">
-          <button>Set Difficulty</button>
-          <button>New Game</button>
+          <button onClick={event => {
+          event.preventDefault();
+          this.props.toggleNavigation('showDifficulty');
+          }}>Set Difficulty</button>
+          <button onClick={event => {
+          event.preventDefault();
+          this.props.newGame();
+          }}>New Game</button>
         </div>
       </nav>
     )

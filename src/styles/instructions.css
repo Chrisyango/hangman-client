@@ -1,6 +1,6 @@
 .instructions {
   position: fixed;
-  top: 0;
+  top: -100vh;
   left: 0;
   width: 100%;
   height: 100vh;
@@ -9,11 +9,10 @@
   align-items: center;
   background-color: tomato;
   z-index: -1;
-  opacity: 0;
-  transition: 0.5s;
+  transition: 1s;
 }
 
 .showInstructions {
-  opacity: 1;
+  top: 0;
   z-index: 10;
 }
