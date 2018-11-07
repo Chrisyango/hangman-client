@@ -14,17 +14,31 @@ class App extends React.Component {
 
     this.state = {
       display : '',
-      word: null
+      word: null,
+      difficulty: 'easy',
+      difficultyChanged: false
     }
   }
   componentDidMount() {
-    this.props.dispatch(fetchWords('hard'))
+    this.props.dispatch(fetchWords(this.state.difficulty))
     .then(() => {
       this.getWord();
     })
   };
 
-  toggleNavigation(display) {
+  componentDidUpdate() {
+    if (this.state.difficultyChanged) {
+      this.props.dispatch(fetchWords(this.state.difficulty))
+      .then(() => {
+        this.getWord();
+      });
+      this.setState({
+        difficultyChanged: false
+      });
+    }
+  };
+
+  setDisplay(display) {
     if (this.state.display === '') {
       this.setState({
         display: display
@@ -44,19 +58,30 @@ class App extends React.Component {
         word: this.props.words[positionInWordList]
       });
     }
-  }
+  };
+
+  setDifficulty(difficulty) {
+    this.setState({
+      difficulty: difficulty,
+      difficultyChanged: true
+    });
+  };
 
   render() {
-    console.log(this.state.word);
     console.log(this.props.words);
     return(
       <div className="app">
         <Navigation
-          toggleNavigation={event => this.toggleNavigation(event)}
+          display={this.state.display}
+          setDisplay={display => this.setDisplay(display)}
           newGame={event => this.getWord()}
         />
         <Instructions display={this.state.display}/>
-        <Difficulty display={this.state.display}/>
+        <Difficulty
+          display={this.state.display}
+          setDisplay={display => this.setDisplay(display)}
+          setDifficulty={difficulty => this.setDifficulty(difficulty)}
+        />
         <Game word={this.state.word}/>
       </div>
     ) 

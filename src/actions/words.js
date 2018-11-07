@@ -29,9 +29,9 @@ export const fetchWords = difficulty => dispatch => {
       return res.json();
     })
     .then(words => {
-      console.log(words);
       let wordList = words[0].words;
       let result;
+      
       switch(difficulty) {
         case 'medium': 
         result = wordList.filter(word => word.length >= 8 && word.length <= 10);

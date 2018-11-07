@@ -10,10 +10,19 @@ export class Difficulty extends React.Component {
         <ul className="setDifficulty">
           <li><button onClick={event => {
             event.preventDefault();
-            
+            this.props.setDifficulty('easy');
+            this.props.setDisplay('');
           }}>Easy</button></li>
-          <li><button>Medium</button></li>
-          <li><button>Hard</button></li>
+          <li><button onClick={event => {
+            event.preventDefault();
+            this.props.setDifficulty('medium');
+            this.props.setDisplay('');
+          }}>Medium</button></li>
+          <li><button onClick={event => {
+            event.preventDefault();
+            this.props.setDifficulty('hard');
+            this.props.setDisplay('');
+          }}>Hard</button></li>
         </ul>
       </div>
     )
