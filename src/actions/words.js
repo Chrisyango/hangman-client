@@ -17,7 +17,7 @@ export const fetchWordsError = error => ({
   error
 });
 
-export const fetchWords = words => dispatch => {
+export const fetchWords = difficulty => dispatch => {
   dispatch(fetchWordsRequest());
   return fetch(`${API_BASE_URL}/words`, {
     method: 'GET',
@@ -29,8 +29,23 @@ export const fetchWords = words => dispatch => {
       return res.json();
     })
     .then(words => {
+      console.log(words);
       let wordList = words[0].words;
-      dispatch(fetchWordsSuccess(wordList));
+      let result;
+      switch(difficulty) {
+        case 'medium': 
+        result = wordList.filter(word => word.length >= 8 && word.length <= 10);
+        break;
+
+        case 'hard': 
+        result = wordList.filter(word => word.length > 10);
+        break;
+
+        default: 
+        result = wordList.filter(word => word.length <= 7);
+        break;
+      }
+      dispatch(fetchWordsSuccess(result));
     })
     .catch(err => {dispatch(fetchWordsError(err))});
 };

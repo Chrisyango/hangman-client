@@ -18,7 +18,7 @@ class App extends React.Component {
     }
   }
   componentDidMount() {
-    this.props.dispatch(fetchWords())
+    this.props.dispatch(fetchWords('hard'))
     .then(() => {
       this.getWord();
     })
@@ -48,6 +48,7 @@ class App extends React.Component {
 
   render() {
     console.log(this.state.word);
+    console.log(this.props.words);
     return(
       <div className="app">
         <Navigation
@@ -57,12 +58,6 @@ class App extends React.Component {
         <Instructions display={this.state.display}/>
         <Difficulty display={this.state.display}/>
         <Game word={this.state.word}/>
-        <button onClick={event => {
-          event.preventDefault();
-          this.setState({
-            word: 'hi'
-          });
-        }}>Hi</button>
       </div>
     ) 
   }

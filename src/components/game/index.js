@@ -10,7 +10,7 @@ export class Game extends React.Component {
       inputVal: '',
       spaces: [],
       lettersGuessed: [],
-      word: null
+      word: null,
     }
   }
 
