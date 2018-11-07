@@ -76,7 +76,10 @@ class App extends React.Component {
           setDisplay={display => this.setDisplay(display)}
           newGame={event => this.getWord()}
         />
-        <Instructions display={this.state.display}/>
+        <Instructions 
+          display={this.state.display}
+          setDisplay={display => this.setDisplay(display)}
+        />
         <Difficulty
           display={this.state.display}
           setDisplay={display => this.setDisplay(display)}

@@ -53,6 +53,8 @@ p {
 }
 
 button {
+  font-size: 1em;
+  color: #333;
   padding: 30px;
   border: none;
   cursor: pointer;
