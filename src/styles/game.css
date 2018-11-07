@@ -10,3 +10,13 @@
   width: 40px;
   border-bottom: 2px solid black;
 }
+
+.letter-button {
+  border: 1px solid black;
+  padding: 10px 15px;
+}
+
+.clicked {
+  background-color: #888;
+  cursor: default;
+}

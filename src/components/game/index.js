@@ -1,6 +1,7 @@
 import React from 'react';
 
 import '../../styles/game.css';
+import Button from './button.js';
 
 export class Game extends React.Component {
   constructor(props) {
@@ -56,6 +57,7 @@ export class Game extends React.Component {
 
   handleSubmit(value) {
     let lettersGuessed = this.state.lettersGuessed;
+    value = value.toLowerCase();
 
     if (!lettersGuessed.includes(value)) {
       lettersGuessed.push(value);
@@ -67,24 +69,28 @@ export class Game extends React.Component {
     this.createSpaces(lettersGuessed, []);
   }
 
+  buttonGenerator() {
+    let buttons = [];
+    for (let i = 65; i <= 90; i++) {
+      buttons.push(
+        <Button
+          key={i}
+          letter={String.fromCharCode(i)}
+          handleSubmit={letter => this.handleSubmit(letter)}
+        />
+      );
+    }
+
+    return buttons;
+  }
+
   render() {
+    console.log(this.state.lettersGuessed);
     return (
       <div className="game">
         <h1>Hangman</h1>
         {this.state.spaces}
-        <form onSubmit={event => {
-          event.preventDefault();
-          this.handleSubmit(this.state.inputVal)
-        }}>
-          <input onChange={event => {
-            this.setState({
-              inputVal: event.target.value
-            })
-          }}
-          type="text"
-          />
-          <button>Submit</button>
-        </form>
+        {this.buttonGenerator()}
       </div>
     )
   }
