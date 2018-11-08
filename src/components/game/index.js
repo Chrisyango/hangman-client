@@ -15,6 +15,26 @@ export class Game extends React.Component {
     }
   }
 
+  componentDidMount() {
+    // When the component is mounted, add your DOM listener to the window.
+    window.addEventListener("keypress", this.keyPress);
+  }
+
+  componentWillUnmount() {
+    // Make sure to remove the DOM listener when the component is unmounted.
+    window.removeEventListener("keypress", this.keyPress);
+  }
+
+  // Use a class arrow function (ES7) for the handler. In ES6 you could bind() a handler in the constructor.
+  keyPress = (event) => {
+    const keyPressed = event.key;
+    const letterNumber = keyPressed.charCodeAt(0);
+    
+    if (letterNumber >= 97 && letterNumber <= 122) {
+      this.handleSubmit(keyPressed);
+    }
+  }
+
   componentDidUpdate() {
     if (this.state.word && this.state.spaces.length === 0) {
       this.createSpaces(this.state.lettersGuessed, []);
@@ -57,7 +77,6 @@ export class Game extends React.Component {
 
   handleSubmit(value) {
     let lettersGuessed = this.state.lettersGuessed;
-    value = value.toLowerCase();
 
     if (!lettersGuessed.includes(value)) {
       lettersGuessed.push(value);
@@ -71,11 +90,12 @@ export class Game extends React.Component {
 
   buttonGenerator() {
     let buttons = [];
-    for (let i = 65; i <= 90; i++) {
+    for (let i = 97; i <= 122; i++) {
       buttons.push(
         <Button
           key={i}
           letter={String.fromCharCode(i)}
+          lettersGuessed={this.state.lettersGuessed}
           handleSubmit={letter => this.handleSubmit(letter)}
         />
       );
@@ -85,7 +105,6 @@ export class Game extends React.Component {
   }
 
   render() {
-    console.log(this.state.lettersGuessed);
     return (
       <div className="game">
         <h1>Hangman</h1>

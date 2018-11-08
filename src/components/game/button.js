@@ -8,6 +8,15 @@ export class Button extends React.Component {
       clicked: false
     }
   }
+
+  componentWillReceiveProps(props) {
+    if (props.lettersGuessed.includes(props.letter)) {
+      this.setState({
+        clicked: true
+      });
+    }
+  }
+
   render() {
     return (
       <button
