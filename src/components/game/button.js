@@ -14,6 +14,10 @@ export class Button extends React.Component {
       this.setState({
         clicked: true
       });
+    } else {
+      this.setState({
+        clicked: false
+      })
     }
   }
 

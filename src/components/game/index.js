@@ -11,7 +11,7 @@ export class Game extends React.Component {
       inputVal: '',
       spaces: [],
       lettersGuessed: [],
-      word: null,
+      word: null
     }
   }
 
@@ -38,6 +38,20 @@ export class Game extends React.Component {
   componentDidUpdate() {
     if (this.state.word && this.state.spaces.length === 0) {
       this.createSpaces(this.state.lettersGuessed, []);
+    }
+
+    if (this.state.spaces.length > 0) {
+      let wordGuessed = '';
+      for (let i = 0; i < this.state.spaces.length; i++) {
+        wordGuessed = wordGuessed + this.state.spaces[i].props.children;
+      }
+      if (wordGuessed === this.state.word) {
+        // Hacky way to get the component to stop updating
+        this.setState({
+          word: null
+        });
+        this.props.getGameStatus('win');
+      }
     }
   }
 

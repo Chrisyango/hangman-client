@@ -7,6 +7,7 @@ import Navigation from './navigation';
 import Instructions from './instructions';
 import Difficulty from './difficulty';
 import Game from './game';
+import Complete from './complete';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class App extends React.Component {
       display : '',
       word: null,
       difficulty: 'easy',
-      difficultyChanged: false
+      difficultyChanged: false,
     }
   }
   componentDidMount() {
@@ -67,8 +68,15 @@ class App extends React.Component {
     });
   };
 
+  getGameStatus(status) {
+    this.setState({
+      display: status
+    });
+  }
+
+  // Need to add a way to disable all game functions after game completes. User gains control after starting a new game.
+
   render() {
-    console.log(this.props.words);
     return(
       <div className="app">
         <Navigation
@@ -85,7 +93,15 @@ class App extends React.Component {
           setDisplay={display => this.setDisplay(display)}
           setDifficulty={difficulty => this.setDifficulty(difficulty)}
         />
-        <Game word={this.state.word}/>
+        <Game 
+          word={this.state.word}
+          getGameStatus={status => this.getGameStatus(status)}
+        />
+        <Complete
+          display={this.state.display}
+          setDisplay={display => this.setDisplay(display)}
+          newGame={event => this.getWord()}
+        />
       </div>
     ) 
   }
