@@ -4,17 +4,35 @@ import '../../styles/complete.css';
 
 export class Complete extends React.Component {
   render() {
-    console.log(this.props.display);
-    return (
-      <div className={(this.props.display === 'win') ? 'complete' : 'hide'}>
+    let complete = (
+      <span>
         <p>You won, congrats!</p>
         <button onClick={event => {
+        event.preventDefault();
+        this.props.newGame();
+        if (this.props.display !== '') {
+          this.props.setDisplay('');
+        }
+        }}>Play again?</button>
+      </span>
+    );
+    if (this.props.display === 'lose') {
+      complete = (
+        <span>
+          <p>You lose.</p>
+          <button onClick={event => {
           event.preventDefault();
           this.props.newGame();
           if (this.props.display !== '') {
             this.props.setDisplay('');
           }
-          }}>New Game?</button>
+          }}>Try again?</button>
+        </span>
+      );
+    }
+    return (
+      <div className={(this.props.display !== '') ? 'complete' : 'hide'}>
+        {complete}
       </div>
     )
   }

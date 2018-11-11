@@ -10,11 +10,13 @@
   background-color: tomato;
   z-index: -1;
   transition: 1s;
+  opacity: 0;
 }
 
 .showDifficulty {
   top: 0;
   z-index: 10;
+  opacity: 1;
 }
 
 .setDifficulty {

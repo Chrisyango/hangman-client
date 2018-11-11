@@ -8,10 +8,10 @@ export class Game extends React.Component {
     super(props);
 
     this.state = {
-      inputVal: '',
       spaces: [],
       lettersGuessed: [],
-      word: null
+      word: null,
+      wrongGuesses: 0
     }
   }
 
@@ -51,6 +51,11 @@ export class Game extends React.Component {
           word: null
         });
         this.props.getGameStatus('win');
+      } else if (this.state.wrongGuesses > 5) {
+        this.setState({
+          wrongGuesses: 0
+        });
+        this.props.getGameStatus('lose');
       }
     }
   }
@@ -58,15 +63,17 @@ export class Game extends React.Component {
   componentWillReceiveProps(props) {
     if (props.word !== this.state.word) {
       this.setState({
+        spaces: [],
         lettersGuessed: [],
         word: props.word,
-        spaces: []
+        wrongGuesses: 0
       });
     }
   }
 
   createSpaces(lettersGuessed, arr) {
     const word = this.state.word;
+    let wrongGuesses = 0;
 
     if (word) {
       for (let i = 0; i < word.length; i++) {
@@ -81,11 +88,15 @@ export class Game extends React.Component {
             arr[i] = <p key={i} className="spaces">{letter}</p>
           }
         }
+        if (!word.includes(letter)) {
+          wrongGuesses++;
+        }
       })
     }
 
     this.setState({
-      spaces: arr
+      spaces: arr,
+      wrongGuesses: wrongGuesses
     });
   }
 
@@ -119,6 +130,7 @@ export class Game extends React.Component {
   }
 
   render() {
+    console.log(this.state.word);
     return (
       <div className="game">
         <h1>Hangman</h1>
