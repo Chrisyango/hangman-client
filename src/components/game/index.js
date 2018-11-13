@@ -1,7 +1,10 @@
 import React from 'react';
 
-import '../../styles/game.css';
 import Button from './button.js';
+import Figure from './figure.js';
+
+import '../../styles/game.css';
+
 
 export class Game extends React.Component {
   constructor(props) {
@@ -130,10 +133,10 @@ export class Game extends React.Component {
   }
 
   render() {
-    console.log(this.state.word);
     return (
       <div className="game">
         <h1>Hangman</h1>
+        <Figure />
         {this.state.spaces}
         {this.buttonGenerator()}
       </div>
