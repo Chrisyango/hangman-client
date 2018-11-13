@@ -3,7 +3,6 @@
   margin: 0 auto;
   width: 500px;
   height: 400px;
-  border: 1px solid black;
 }
 
 .hangman-stand {
@@ -59,4 +58,12 @@
   position: absolute;
   top: 238px;
   left: 260px;
+}
+
+.show-img {
+  opacity: 1;
+}
+
+.hide-img {
+  opacity: 0;
 }

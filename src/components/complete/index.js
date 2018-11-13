@@ -31,7 +31,7 @@ export class Complete extends React.Component {
       );
     }
     return (
-      <div className={(this.props.display !== '') ? 'complete' : 'hide'}>
+      <div className={(this.props.display === 'win' || this.props.display === 'lose') ? 'complete' : 'hide'}>
         {complete}
       </div>
     )

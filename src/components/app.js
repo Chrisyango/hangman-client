@@ -20,6 +20,7 @@ class App extends React.Component {
       difficultyChanged: false,
     }
   }
+
   componentDidMount() {
     this.props.dispatch(fetchWords(this.state.difficulty))
     .then(() => {
@@ -73,8 +74,6 @@ class App extends React.Component {
       display: status
     });
   }
-
-  // Need to add a way to disable all game functions after game completes. User gains control after starting a new game.
 
   render() {
     return(

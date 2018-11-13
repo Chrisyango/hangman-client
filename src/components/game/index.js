@@ -18,16 +18,6 @@ export class Game extends React.Component {
     }
   }
 
-  componentDidMount() {
-    // When the component is mounted, add your DOM listener to the window.
-    window.addEventListener("keypress", this.keyPress);
-  }
-
-  componentWillUnmount() {
-    // Make sure to remove the DOM listener when the component is unmounted.
-    window.removeEventListener("keypress", this.keyPress);
-  }
-
   // Use a class arrow function (ES7) for the handler. In ES6 you could bind() a handler in the constructor.
   keyPress = (event) => {
     const keyPressed = event.key;
@@ -38,9 +28,15 @@ export class Game extends React.Component {
     }
   }
 
+  runGetGameStatus(status) {
+    this.props.getGameStatus(status);
+    window.removeEventListener("keypress", this.keyPress);
+  }
+
   componentDidUpdate() {
     if (this.state.word && this.state.spaces.length === 0) {
       this.createSpaces(this.state.lettersGuessed, []);
+      window.addEventListener("keypress", this.keyPress);
     }
 
     if (this.state.spaces.length > 0) {
@@ -53,12 +49,12 @@ export class Game extends React.Component {
         this.setState({
           word: null
         });
-        this.props.getGameStatus('win');
-      } else if (this.state.wrongGuesses > 5) {
+        this.runGetGameStatus('win');
+      } else if (this.state.wrongGuesses === 6) {
         this.setState({
-          wrongGuesses: 0
+          wrongGuesses: 7
         });
-        this.props.getGameStatus('lose');
+        this.runGetGameStatus('lose');
       }
     }
   }
@@ -136,7 +132,7 @@ export class Game extends React.Component {
     return (
       <div className="game">
         <h1>Hangman</h1>
-        <Figure />
+        <Figure wrongGuesses={this.state.wrongGuesses}/>
         {this.state.spaces}
         {this.buttonGenerator()}
       </div>
