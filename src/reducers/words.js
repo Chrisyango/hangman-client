@@ -2,10 +2,12 @@ import {
   FETCH_WORDS_REQUEST,
   FETCH_WORDS_SUCCESS,
   FETCH_WORDS_ERROR,
+  SET_DISPLAY,
 } from '../actions/words';
 
 const initialState = {
   words: [],
+  display: '',
   loading: false,
   error: null
 };
@@ -25,6 +27,11 @@ export default function reducer(state = initialState, action) {
     return Object.assign({}, state, {
       loading: false,
       error: action.error
+    });
+  } else if (action.type === SET_DISPLAY) {
+    return Object.assign({}, state, {
+      loading: false,
+      display: action.display
     });
   }
   return state;

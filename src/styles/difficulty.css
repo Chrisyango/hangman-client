@@ -1,20 +1,21 @@
 .difficulty {
   position: fixed;
-  top: -100vh;
-  left: 0;
-  width: 100%;
-  height: 100vh;
+  top: 50vh;
+  left: 50%;
+  width: 400px;
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: tomato;
+  background-color: #000;
   z-index: -1;
-  transition: 1s;
+  transition: 0.5s;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
   opacity: 0;
 }
 
 .showDifficulty {
-  top: 0;
   z-index: 10;
   opacity: 1;
 }
@@ -23,15 +24,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  
-}
-
-.setDifficulty li {
-  padding: 0px 100px;
+  flex-direction: column;
 }
 
 .setDifficulty li button {
-  font-size: 2em;
-  color: #333;
+  font-size: 1.3em;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  margin: 15px 0;
+  width: 150px;
 }

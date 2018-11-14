@@ -14,7 +14,6 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      display : '',
       word: null,
       difficulty: 'easy',
       difficultyChanged: false,
@@ -40,18 +39,6 @@ class App extends React.Component {
     }
   };
 
-  setDisplay(display) {
-    if (this.state.display === '') {
-      this.setState({
-        display: display
-      });
-    } else {
-      this.setState({
-        display: ''
-      });
-    }
-  };
-
   getWord() {
     const positionInWordList = Math.floor(Math.random() * Math.max(this.props.words.length));
     
@@ -69,36 +56,20 @@ class App extends React.Component {
     });
   };
 
-  getGameStatus(status) {
-    this.setState({
-      display: status
-    });
-  }
-
   render() {
     return(
       <div className="app">
         <Navigation
-          display={this.state.display}
-          setDisplay={display => this.setDisplay(display)}
           newGame={event => this.getWord()}
         />
-        <Instructions 
-          display={this.state.display}
-          setDisplay={display => this.setDisplay(display)}
-        />
+        <Instructions />
         <Difficulty
-          display={this.state.display}
-          setDisplay={display => this.setDisplay(display)}
           setDifficulty={difficulty => this.setDifficulty(difficulty)}
         />
         <Game 
           word={this.state.word}
-          getGameStatus={status => this.getGameStatus(status)}
         />
         <Complete
-          display={this.state.display}
-          setDisplay={display => this.setDisplay(display)}
           newGame={event => this.getWord()}
         />
       </div>
@@ -107,7 +78,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  words: state.words.words
+  words: state.words.words,
+  display: state.words.display
 });
 
 export default withRouter(connect(mapStateToProps)(App));

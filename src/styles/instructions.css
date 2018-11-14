@@ -1,21 +1,36 @@
 .instructions {
   position: fixed;
-  top: -100vh;
-  left: 0;
-  width: 100%;
-  height: 100vh;
+  top: 50vh;
+  left: 50%;
+  width: 400px;
+  height: 300px;
+  padding: 10px 20px;
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: tomato;
+  background-color: #000;
+  color: #fff;
   z-index: -1;
-  transition: 1s;
+  transition: 0.5s;
   opacity: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+
+.instructions p {
+  margin: 10px 0;
+}
+
+.instructions button {
+  margin: 20px 0;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 5px;
 }
 
 .showInstructions {
-  top: 0;
   z-index: 10;
   opacity: 1;
 }

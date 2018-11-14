@@ -1,4 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
+import {setDisplay} from '../../actions/words';
 
 import Button from './button.js';
 import Figure from './figure.js';
@@ -28,8 +31,8 @@ export class Game extends React.Component {
     }
   }
 
-  runGetGameStatus(status) {
-    this.props.getGameStatus(status);
+  runSetDisplay(display) {
+    this.props.dispatch(setDisplay(display));
     window.removeEventListener("keypress", this.keyPress);
   }
 
@@ -49,12 +52,12 @@ export class Game extends React.Component {
         this.setState({
           word: null
         });
-        this.runGetGameStatus('win');
+        this.runSetDisplay('win');
       } else if (this.state.wrongGuesses === 6) {
         this.setState({
           wrongGuesses: 7
         });
-        this.runGetGameStatus('lose');
+        this.runSetDisplay('lose');
       }
     }
   }
@@ -142,4 +145,8 @@ export class Game extends React.Component {
   }
 }
 
-export default Game;
+const mapStateToProps = state => ({
+  display: state.words.display
+});
+
+export default withRouter(connect(mapStateToProps)(Game));

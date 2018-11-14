@@ -17,6 +17,12 @@ export const fetchWordsError = error => ({
   error
 });
 
+export const SET_DISPLAY = 'SET_DISPLAY';
+export const setDisplayRequest = display => ({
+  type: SET_DISPLAY,
+  display
+});
+
 export const fetchWords = difficulty => dispatch => {
   dispatch(fetchWordsRequest());
   return fetch(`${API_BASE_URL}/words`, {
@@ -49,3 +55,11 @@ export const fetchWords = difficulty => dispatch => {
     })
     .catch(err => {dispatch(fetchWordsError(err))});
 };
+
+export const setDisplay = display => dispatch => {
+  if (display) {
+    dispatch(setDisplayRequest(display));
+  } else {
+    dispatch(setDisplayRequest(''));
+  }
+}
