@@ -76,7 +76,7 @@ export class Game extends React.Component {
 
     if (word) {
       for (let i = 0; i < word.length; i++) {
-        arr.push(<p className="spaces" key={i}></p>)
+        arr.push(<p className="spaces" key={i}>&nbsp;</p>)
       }
     }
 
@@ -134,7 +134,9 @@ export class Game extends React.Component {
         <h1>Hangman</h1>
         <Figure wrongGuesses={this.state.wrongGuesses}/>
         {this.state.spaces}
-        {this.buttonGenerator()}
+        <div className="keyboard">
+          {this.buttonGenerator()}
+        </div>
       </div>
     )
   }

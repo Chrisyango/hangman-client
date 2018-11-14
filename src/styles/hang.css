@@ -28,18 +28,18 @@
 
 .stick-right-arm {
   width: 60px;
-  height: 90px;
+  height: 70px;
   position: absolute;
-  top: 140px;
-  left: 315px;
+  top: 150px;
+  left: 325px;
 }
 
 .stick-left-arm {
   width: 60px;
-  height: 90px;
+  height: 70px;
   position: absolute;
-  top: 140px;
-  left: 275px;
+  top: 150px;
+  left: 265px;
 }
 
 .stick-right-leg {

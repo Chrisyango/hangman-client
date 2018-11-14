@@ -1,19 +1,30 @@
 .game {
   text-align: center;
   width: 100%;
-  margin-top: 400px;
+  margin-top: 150px;
 }
 
 .spaces {
   font-size: 20px;
-  margin: 0 5px;
+  margin: 15px 5px;
   width: 40px;
   border-bottom: 2px solid black;
 }
 
+.keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  margin: 15px auto;
+  width: 600px;
+}
+
 .letter-button {
   border: 1px solid black;
+  width: 45px;
   padding: 10px 15px;
+  margin: 10px;
 }
 
 .clicked {

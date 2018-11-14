@@ -3,8 +3,12 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #2BD9FE;
+  background-color: #000;
   z-index: 100;
+}
+
+.navigation button {
+  color: #fff;
 }
 
 .game-settings {
