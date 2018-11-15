@@ -7,10 +7,9 @@ import '../../styles/complete.css';
 
 export class Complete extends React.Component {
   render() {
-    console.log(this.props.display);
     let complete = (
       <span>
-        <p>You won, congrats!</p>
+        <p>You guessed the word "{this.props.word}". <br /> You won, congrats!</p>
         <button onClick={event => {
         event.preventDefault();
         this.props.newGame();
@@ -23,7 +22,8 @@ export class Complete extends React.Component {
     if (this.props.display === 'lose') {
       complete = (
         <span>
-          <p>You lose.</p>
+          <p>It's unfortunate, but you couldn't guess the word 
+          "{this.props.word}". <br /> You lose.</p>
           <button onClick={event => {
           event.preventDefault();
           this.props.newGame();

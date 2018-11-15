@@ -22,7 +22,7 @@ export class Navigation extends React.Component {
           event.preventDefault();
           this.props.newGame();
           if (this.props.display !== '') {
-            this.props.setDisplay('');
+            this.props.dispatch(setDisplay(''));
           }
           }}>New Game</button>
         </div>

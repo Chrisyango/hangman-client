@@ -8,6 +8,7 @@ import Instructions from './instructions';
 import Difficulty from './difficulty';
 import Game from './game';
 import Complete from './complete';
+import Overlay from './overlay';
 
 class App extends React.Component {
   constructor(props) {
@@ -66,10 +67,14 @@ class App extends React.Component {
         <Difficulty
           setDifficulty={difficulty => this.setDifficulty(difficulty)}
         />
+        <Overlay 
+          newGame={event => this.getWord()}
+        />
         <Game 
           word={this.state.word}
         />
         <Complete
+          word={this.state.word}
           newGame={event => this.getWord()}
         />
       </div>
