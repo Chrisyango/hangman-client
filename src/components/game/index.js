@@ -133,7 +133,7 @@ export class Game extends React.Component {
 
   render() {
     let loading;
-    loading = (this.props.loading === true) ? <h1>Loading Words</h1> : <h1>Hangman</h1>
+    loading = (this.props.loading === true) ? <h1>Loading Word</h1> : <h1>Hangman</h1>
     return (
       <div className="game">
         {loading}

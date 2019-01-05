@@ -21,6 +21,7 @@ export default function reducer(state = initialState, action) {
   } else if (action.type === FETCH_WORDS_SUCCESS) {
     return Object.assign({}, state, {
       words: action.words,
+      loading: false,
       error: null
     });
   } else if (action.type === FETCH_WORDS_ERROR) {
