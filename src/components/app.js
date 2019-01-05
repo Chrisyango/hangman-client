@@ -58,6 +58,7 @@ class App extends React.Component {
   };
 
   render() {
+    console.log(this.props.loading);
     return(
       <div className="app">
         <Navigation
@@ -84,7 +85,8 @@ class App extends React.Component {
 
 const mapStateToProps = state => ({
   words: state.words.words,
-  display: state.words.display
+  display: state.words.display,
+  loading: state.words.loading
 });
 
 export default withRouter(connect(mapStateToProps)(App));

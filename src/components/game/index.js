@@ -132,9 +132,11 @@ export class Game extends React.Component {
   }
 
   render() {
+    let loading;
+    loading = (this.props.loading === true) ? <h1>Loading Words</h1> : <h1>Hangman</h1>
     return (
       <div className="game">
-        <h1>Hangman</h1>
+        {loading}
         <Figure wrongGuesses={this.state.wrongGuesses}/>
         {this.state.spaces}
         <div className="keyboard">
@@ -146,7 +148,8 @@ export class Game extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  display: state.words.display
+  display: state.words.display,
+  loading: state.words.loading
 });
 
 export default withRouter(connect(mapStateToProps)(Game));
