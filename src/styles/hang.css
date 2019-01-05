@@ -67,3 +67,54 @@
 .hide-img {
   opacity: 0;
 }
+
+@media only screen and (max-width: 625px) {
+	.hangman-image {
+    width: 350px;
+    height: 300px;
+  }
+
+  .stick-head {
+    width: 60px;
+    height: 40px;
+    top: 81px;
+    left: 199px;
+  }
+  
+  .stick-body {
+    width: 60px;
+    height: 90px;
+    top: 103px;
+    left: 199px;
+  }
+  
+  .stick-right-arm {
+    width: 40px;
+    height: 50px;
+    top: 110px;
+    left: 228px;
+  }
+  
+  .stick-left-arm {
+    width: 40px;
+    height: 50px;
+    top: 110px;
+    left: 190px;
+  }
+  
+  .stick-right-leg {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    width: 65px;
+    height: 60px;
+    top: 173px;
+    left: 214px;
+  }
+  
+  .stick-left-leg {
+    width: 65px;
+    height: 60px;
+    top: 173px;
+    left: 178px;
+  }
+}

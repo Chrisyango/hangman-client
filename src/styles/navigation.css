@@ -3,6 +3,10 @@
   top: 0;
   left: 0;
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
   background-color: #000;
   z-index: 100;
 }
@@ -11,6 +15,8 @@
   color: #fff;
 }
 
-.game-settings {
-  float: right;
+@media only screen and (max-width: 480px) {
+	.navigation button {
+    width: 120px;
+	}
 }

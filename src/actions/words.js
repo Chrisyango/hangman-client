@@ -40,15 +40,15 @@ export const fetchWords = difficulty => dispatch => {
       
       switch(difficulty) {
         case 'medium': 
-        result = wordList.filter(word => word.length >= 8 && word.length <= 10);
+        result = wordList.filter(word => word.length >= 6 && word.length <= 9);
         break;
 
         case 'hard': 
-        result = wordList.filter(word => word.length > 10);
+        result = wordList.filter(word => word.length > 9);
         break;
 
         default: 
-        result = wordList.filter(word => word.length <= 7);
+        result = wordList.filter(word => word.length <= 5);
         break;
       }
       dispatch(fetchWordsSuccess(result));

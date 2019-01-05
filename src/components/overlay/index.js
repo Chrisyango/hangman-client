@@ -11,9 +11,9 @@ export class Overlay extends React.Component {
       <div className={(this.props.display !== '') ? 'overlay' : ''} onClick={event => {
         event.preventDefault();
         this.props.dispatch(setDisplay(''));
-        if (this.props.display === 'win' || 'lose') {
+        if (this.props.display === 'win' || this.props.display === 'lose') {
           this.props.newGame();
-        }
+        }        
       }}></div>
     )
   }

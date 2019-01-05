@@ -35,3 +35,10 @@
   margin: 15px 0;
   width: 150px;
 }
+
+@media only screen and (max-width: 480px) {
+	.difficulty {
+    width: 360px;
+    height: 380px;
+	}
+}

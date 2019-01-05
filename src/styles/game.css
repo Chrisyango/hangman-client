@@ -22,6 +22,7 @@
 
 .letter-button {
   border: 1px solid black;
+  font-size: 20px;
   width: 45px;
   padding: 10px 15px;
   margin: 10px;
@@ -30,4 +31,26 @@
 .clicked {
   background-color: #888;
   cursor: default;
+}
+
+@media only screen and (max-width: 625px) {
+  .game h1 {
+    font-size: 48px;
+    margin-top: 200px;
+  }
+
+  .spaces {
+    font-size: 16px;
+  }
+
+	.keyboard {
+    width: 350px;
+  }
+
+  .letter-button {
+    font-size: 16px;
+    width: 35px;
+    padding: 5px 5px;
+    margin: 7px;
+  }
 }
